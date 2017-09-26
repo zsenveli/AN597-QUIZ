@@ -1,0 +1,15 @@
+---
+title: "QUIZ01"
+author: "Zeynep Senveli"
+date: "9/26/2017"
+output: html_document
+---
+
+```(r)
+library(dplyr)
+library(curl)
+f <- f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv")
+d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+fem <- filter(d, Gender == "Female")
+fem
+```
