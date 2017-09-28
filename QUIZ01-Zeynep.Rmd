@@ -5,31 +5,31 @@ date: "9/26/2017"
 output: html_document
 ---
 
-```(r)
+```{r}
 library(dplyr)
 library(curl)
 ```
 
 For reading in the zombies.csv file:
-```(r)
+```{r}
 f <- f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv")
 d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 ```
 
 For creating a subset of the dataframe that only contains females:
-```(r)
+```{r}
 fem <- filter(d, gender == "Female")
 fem
 ```
 
 Now extracting the first and last name information from said dataset:
-```(r)
+```{r}
 femname <- select(fem, first_name, last_name)
 femname
 ```
 
 If I wanted to pipe it:
-```(r)
+```{r}
 d %>%
 filter(gender == "Female") %>%
 select(first_name, last_name)

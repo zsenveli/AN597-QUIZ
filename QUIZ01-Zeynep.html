@@ -123,21 +123,2009 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="(r)"><code>library(dplyr)
-library(curl)</code></pre>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: 'dplyr'</code></pre>
+<pre><code>## The following objects are masked from 'package:stats':
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(curl)</code></pre>
 <p>For reading in the zombies.csv file:</p>
-<pre class="(r)"><code>f &lt;- f &lt;- curl(&quot;https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv&quot;)
+<pre class="r"><code>f &lt;- f &lt;- curl(&quot;https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv&quot;)
 d &lt;- read.csv(f, header = TRUE, sep = &quot;,&quot;, stringsAsFactors = FALSE)</code></pre>
 <p>For creating a subset of the dataframe that only contains females:</p>
-<pre class="(r)"><code>fem &lt;- filter(d, gender == &quot;Female&quot;)
+<pre class="r"><code>fem &lt;- filter(d, gender == &quot;Female&quot;)
 fem</code></pre>
+<pre><code>##      id first_name  last_name gender   height    weight zombies_killed
+## 1     1      Sarah     Little Female 62.88951 132.08717              2
+## 2     5      Tammy     Powell Female 64.71832 132.42649              4
+## 3     7    Theresa   Hamilton Female 70.26459 160.25690              0
+## 4     8    Phyllis    Jenkins Female 59.82760 108.80931              4
+## 5    14     Louise       Hall Female 65.88747 131.53363              5
+## 6    18       Anne      Garza Female 62.74435 127.11449              3
+## 7    20      Sarah     Weaver Female 63.17104 123.21773              1
+## 8    21     Denise   Richards Female 62.40083 120.79496              3
+## 9    22       Jean     Harris Female 63.32658 129.71493              1
+## 10   26     Cheryl    Sanders Female 66.21361 147.58913              1
+## 11   27      Annie     Warren Female 64.27576 122.73587              1
+## 12   30     Janice    Stevens Female 69.14401 149.17756              1
+## 13   31      Robin      Adams Female 64.43709 134.94510              1
+## 14   35      Emily       Shaw Female 64.69846 143.58785              5
+## 15   37    Jessica   Marshall Female 67.17555 149.53860              8
+## 16   38       Tina       Wood Female 67.53278 147.95051              1
+## 17   41      Maria     Hughes Female 66.14536 149.30082              7
+## 18   45  Christina      Clark Female 66.88320 124.59445              3
+## 19   46      Maria     Hudson Female 65.80217 139.41537              2
+## 20   48      Carol     Oliver Female 64.30928 143.92004              2
+## 21   49    Heather     Gordon Female 63.53249 135.50657              2
+## 22   50     Judith      Lopez Female 62.32462 120.78901              6
+## 23   52     Andrea       Cole Female 60.66651 103.64309              2
+## 24   53     Angela     Brooks Female 64.15817 127.11001              1
+## 25   54      Marie     Butler Female 62.42483 140.52503              1
+## 26   56    Theresa      Payne Female 68.30398 154.16275              7
+## 27   57       Ruth      Perry Female 62.12425 120.61412              3
+## 28   58 Jacqueline     Greene Female 65.29115 127.04585              5
+## 29   59    Rebecca      Price Female 69.04027 159.69505              6
+## 30   61    Heather       Reed Female 68.16988 148.75251              4
+## 31   68      Julie  Armstrong Female 67.05393 138.76923              1
+## 32   70    Mildred     Graham Female 59.57561 106.90385              3
+## 33   71     Cheryl    Andrews Female 72.29987 168.09464              2
+## 34   72       Rose       Gray Female 69.42492 148.18216              4
+## 35   74    Lillian       Wood Female 67.91256 140.22323              4
+## 36   75     Nicole      Perry Female 64.34378 135.90400              2
+## 37   77     Angela    Wallace Female 70.21352 157.77598              3
+## 38   78      Janet      Ortiz Female 67.42280 155.74578              0
+## 39   82       Joan     Parker Female 67.25491 138.28812              2
+## 40   83      Karen      Reyes Female 64.19751 127.90719              4
+## 41   84    Frances Cunningham Female 70.28444 149.56369              3
+## 42   88    Phyllis    Wheeler Female 58.74318 109.61112              2
+## 43   89    Melissa     Porter Female 59.74390 118.61620              2
+## 44   90     Janice     Willis Female 70.55803 162.39507              3
+## 45   98     Angela  Hernandez Female 64.79030 139.49974              2
+## 46   99     Teresa       Hill Female 69.78052 162.17361              2
+## 47  104      Debra    Garrett Female 69.14784 143.73112              3
+## 48  106     Louise    Stevens Female 68.25392 151.15346              4
+## 49  107       Sara     Holmes Female 63.71453 134.63487              3
+## 50  108        Ann   Robinson Female 66.34735 140.14908              1
+## 51  111      Wanda    Russell Female 69.94287 133.82793              3
+## 52  113    Marilyn     Bryant Female 62.73187 125.87781              3
+## 53  115      Robin       Wood Female 72.27316 142.80879              6
+## 54  117   Kathleen     Harris Female 65.70558 141.96405              2
+## 55  118  Christina    Gilbert Female 65.21957 143.48528              2
+## 56  119     Judith   Ferguson Female 55.62160 104.46731              2
+## 57  124   Virginia     Barnes Female 62.03725 130.80562              1
+## 58  125      Sarah       Ruiz Female 68.81267 122.72659              3
+## 59  127       Judy     Fields Female 62.82903 127.73019              5
+## 60  128     Denise      Perry Female 62.17699 125.13290              5
+## 61  130       Sara     Flores Female 71.30298 165.48850              3
+## 62  131     Sandra      Myers Female 70.09881 157.73488              2
+## 63  139       Lori       Hart Female 64.99637 127.48816              2
+## 64  141        Ann       Dunn Female 65.36311 143.34146              3
+## 65  142     Pamela    Gardner Female 68.38370 137.40639              4
+## 66  143      Helen    Schmidt Female 66.16297 146.67834              4
+## 67  146        Ann      Dixon Female 66.76502 144.87884              1
+## 68  147    Dorothy     Foster Female 65.38845 138.13994              0
+## 69  150     Bonnie   Gonzalez Female 68.03566 142.30863              2
+## 70  151      Robin      Gomez Female 65.16024 137.78717              1
+## 71  152       Anne  Hernandez Female 62.61210 122.90843              0
+## 72  153       Jane       Dean Female 60.27461 118.43181              5
+## 73  154    Heather     Romero Female 65.01620 141.28974              3
+## 74  155    Cynthia       Ford Female 66.70297 137.68068              3
+## 75  157       Mary  Rodriguez Female 65.40327 136.30243              2
+## 76  158    Phyllis    Spencer Female 65.18109 140.94470              4
+## 77  160    Mildred      Lopez Female 67.76443 134.74878              4
+## 78  161    Kathryn    Schmidt Female 67.70104 143.17541              5
+## 79  164      Janet       Cook Female 67.33379 139.52740              5
+## 80  165       Jane     Graham Female 69.06732 140.75832              5
+## 81  166     Angela    Ramirez Female 65.42384 125.76590              3
+## 82  169       Rose      Mccoy Female 70.31931 143.80713              2
+## 83  170       Anna       Cruz Female 68.29221 143.98426              4
+## 84  171     Evelyn  Gutierrez Female 66.40247 121.81633              2
+## 85  172    Theresa     Martin Female 69.38269 140.27244              4
+## 86  173  Christina   Robinson Female 67.14351 125.26830              5
+## 87  174       Mary     Fowler Female 65.08253 113.53578              3
+## 88  176     Amanda     Burton Female 63.63477 139.20272              4
+## 89  178     Cheryl      Clark Female 64.18962 143.45538              2
+## 90  179      Maria   Castillo Female 68.29124 140.69356              3
+## 91  180      Nancy        Fox Female 69.26646 154.98893              4
+## 92  186       Ruth       Webb Female 66.82291 119.43159              3
+## 93  187        Ann       Reid Female 71.02192 141.79841              2
+## 94  189    Heather  Hernandez Female 70.37832 130.53907              4
+## 95  193      Nancy    Wallace Female 66.59400 138.28322              5
+## 96  194       Anne       Reed Female 59.70420 111.49075              3
+## 97  197     Gloria      Hayes Female 65.65491 141.31220              4
+## 98  201    Heather      Stone Female 63.54681 113.26981              6
+## 99  202     Janice      Davis Female 67.89872 154.90117              3
+## 100 203      Kelly  Hernandez Female 67.77072 151.72187              2
+## 101 204     Angela     Miller Female 65.00593 129.49971              5
+## 102 206     Pamela   Reynolds Female 63.49785 128.37587              4
+## 103 207    Phyllis       King Female 64.65742 129.57559              6
+## 104 210  Stephanie     Watson Female 66.71065 130.71635              2
+## 105 213      Tammy  Armstrong Female 63.66584 127.32018              4
+## 106 215      Diana      Ortiz Female 66.95127 151.76066              5
+## 107 216      Debra    Simpson Female 68.83637 156.99055              2
+## 108 219      Kathy       Dunn Female 64.45048 126.80759              2
+## 109 221    Frances     Lawson Female 66.85417 138.16634              5
+## 110 224      Tammy      Gomez Female 61.35044 120.34255              2
+## 111 226      Emily     Rivera Female 67.60750 141.59998              3
+## 112 227      Maria    Wallace Female 62.94211 132.06772              0
+## 113 228     Judith   Gonzalez Female 64.50872 124.10798              1
+## 114 231   Kathleen     Wright Female 63.35430 118.54603              2
+## 115 232     Teresa   Anderson Female 67.56185 146.03713              2
+## 116 234     Louise    Stevens Female 69.19429 149.24289              6
+## 117 235      Betty     Howard Female 63.54701 145.41724              4
+## 118 239   Michelle   Harrison Female 66.54655 121.89117              3
+## 119 240       Lisa    Russell Female 67.29899 145.72193              5
+## 120 241     Brenda      Black Female 65.73552 131.27131              2
+## 121 243  Catherine    Griffin Female 69.54820 136.00112              3
+## 122 244    Marilyn  Rodriguez Female 67.03909 152.55135              3
+## 123 245      Carol       Ryan Female 69.02792 142.75193              3
+## 124 249   Kathleen      Green Female 65.99565 139.85364              3
+## 125 250    Marilyn  Patterson Female 65.21677 128.06537              3
+## 126 251      Julie     Fields Female 61.59703 120.52631              2
+## 127 252      Janet  Armstrong Female 66.44662 128.23482              7
+## 128 253    Heather       Hart Female 65.08853 128.83160              1
+## 129 255     Judith      Woods Female 64.87548 116.45998              2
+## 130 256    Phyllis      Stone Female 67.15592 129.47204              5
+## 131 259    Barbara     Morris Female 62.03273 135.30925              7
+## 132 260    Barbara       Hunt Female 64.71368 130.98123              1
+## 133 261      Tammy       Hart Female 57.63606 115.97451              4
+## 134 266     Denise   Robinson Female 64.15654 139.76274              3
+## 135 272     Denise   Ferguson Female 65.32725 132.53775              2
+## 136 273        Ann     Carter Female 62.65719 148.31962              2
+## 137 275      Marie    Coleman Female 66.65833 136.00719              3
+## 138 276      Linda       King Female 64.97681 122.30617              3
+## 139 279      Tammy   Gonzales Female 62.34640 117.57860              6
+## 140 284    Frances       Cook Female 58.13216 110.88692              3
+## 141 285     Amanda      Mills Female 58.88539 113.67640              1
+## 142 286   Virginia       Dean Female 68.72874 167.53775              6
+## 143 287    Deborah   Lawrence Female 65.25383 134.12832              2
+## 144 291       Jane       Reed Female 65.23508 134.28578              1
+## 145 293      Irene      Lewis Female 63.77365 120.22865              2
+## 146 294      Laura       Ross Female 63.18053 127.10172              1
+## 147 299      Kelly      Burke Female 69.91124 145.73890              5
+## 148 300      Helen       Cook Female 71.68438 157.69028              4
+## 149 302     Cheryl    Roberts Female 67.78153 128.18377              0
+## 150 303   Patricia        Kim Female 68.69576 140.66635              1
+## 151 306     Gloria     Morgan Female 68.09022 142.85116              1
+## 152 307       Judy     Peters Female 63.76315 127.86502              4
+## 153 309      Tammy     Porter Female 64.87039 123.63996              2
+## 154 312      Paula       Hall Female 60.34227 114.51684              2
+## 155 314    Deborah   Mcdonald Female 68.98872 144.03453              2
+## 156 315      Tammy     Martin Female 65.69532 123.41739              5
+## 157 316      Maria     Flores Female 67.17217 143.83208              3
+## 158 317 Jacqueline      Hicks Female 63.00016 131.84784              3
+## 159 318     Gloria     Fowler Female 62.13360 119.56843              2
+## 160 319        Amy   Matthews Female 64.46121 129.85802              0
+## 161 320      Maria     Warren Female 69.47477 156.71838              2
+## 162 321       Joan    Andrews Female 55.66449 104.32025              3
+## 163 322     Ashley      Woods Female 63.74886 131.53597              3
+## 164 325  Catherine       Diaz Female 70.25889 146.41676              2
+## 165 326       Mary       Bell Female 73.62638 162.01327              3
+## 166 328      Robin     Little Female 72.05441 146.83509              4
+## 167 329     Teresa    Schmidt Female 67.08054 135.56005              1
+## 168 335       Judy       Hill Female 68.16540 152.72359              1
+## 169 338   Kathleen     Carter Female 67.32688 134.00572              5
+## 170 340      Doris      Perez Female 62.45370 134.88586              9
+## 171 343    Beverly   Phillips Female 67.03964 138.88308              1
+## 172 345     Sharon     Bryant Female 56.59750 118.04779              8
+## 173 346    Marilyn     Peters Female 61.98588 134.54128              5
+## 174 348    Deborah   Lawrence Female 71.06841 155.76127              3
+## 175 349      Tammy     Butler Female 65.94866 145.49633              3
+## 176 350   Jennifer    Garrett Female 67.06188 141.78547              1
+## 177 351       Ruby    Kennedy Female 64.59859 132.52707              4
+## 178 353     Teresa       King Female 72.10447 168.92029              1
+## 179 360   Kathleen    Nichols Female 62.68424 125.08439              1
+## 180 362    Jessica   Mcdonald Female 65.60196 126.58763              2
+## 181 363       Anne    Freeman Female 71.55670 139.10953              2
+## 182 367     Sandra     Knight Female 68.64705 139.18612              2
+## 183 368       Jane      Woods Female 69.90024 155.61573              1
+## 184 371     Brenda    Morales Female 63.92522 135.00456              1
+## 185 372      Sarah     Foster Female 62.75796 109.69863              5
+## 186 374     Sandra  Alexander Female 64.57137 135.04480              0
+## 187 377  Elizabeth  Gutierrez Female 65.08026 155.55169              2
+## 188 378       Jean    Johnson Female 67.67221 136.64281              5
+## 189 380  Christina    Freeman Female 66.03250 137.34537              2
+## 190 381      Janet   Hamilton Female 60.59620 124.33490              2
+## 191 385       Judy     Foster Female 65.26197 148.26509              3
+## 192 386    Mildred   Gonzalez Female 61.94586 113.94000              3
+## 193 387  Christina     Taylor Female 64.74608 148.56487              1
+## 194 388    Carolyn    Hawkins Female 61.45906 128.25544              8
+## 195 392   Michelle     Weaver Female 60.32104 113.00907              4
+## 196 398  Christina       West Female 67.40818 143.76827              2
+## 197 400    Melissa  Alexander Female 61.40602 116.97247              6
+## 198 402    Phyllis       Carr Female 70.99103 152.96564              6
+## 199 403       Tina       West Female 65.18479 141.49123              1
+## 200 404     Denise     Walker Female 59.56853 101.46641              5
+## 201 405      Linda    Stewart Female 69.25323 145.23000              5
+## 202 407       Tina    Carroll Female 62.96045 127.81594              5
+## 203 409     Sharon      Davis Female 65.14789 143.49534              4
+## 204 410      Norma      Olson Female 62.48025 114.89881              4
+## 205 411      Karen   Ferguson Female 70.21358 164.51225              5
+## 206 414      Debra     Hughes Female 63.09504 117.97261              2
+## 207 415     Bonnie     Jordan Female 63.58240 141.43774              2
+## 208 418      Emily     Cooper Female 69.00715 149.72943              1
+## 209 420      Betty    Mendoza Female 60.21609 116.92006              5
+## 210 423      Julie      Evans Female 66.04845 139.65063              4
+## 211 425      Karen        Lee Female 67.17895 145.10020              5
+## 212 427    Lillian      Davis Female 74.08120 158.57634              3
+## 213 431      Betty  Patterson Female 68.26537 136.98530              2
+## 214 434      Maria    Jenkins Female 65.84735 143.38313              3
+## 215 439   Kimberly     Graham Female 66.38030 130.42275              2
+## 216 442    Kathryn     Jacobs Female 65.27007 129.93437              3
+## 217 443      Paula      Perez Female 68.67168 126.63190              2
+## 218 447      Alice       Shaw Female 72.14192 142.67519              2
+## 219 450     Brenda     Greene Female 63.32991 134.36885              2
+## 220 451    Shirley    Stevens Female 66.58934 126.21003              2
+## 221 456   Patricia      Wells Female 62.54020 127.72179              2
+## 222 457      Annie   Martinez Female 66.48461 125.22667              3
+## 223 458      Diana     Gordon Female 63.84295 120.13718              3
+## 224 459       Joan       Boyd Female 67.12636 145.29109              3
+## 225 460      Linda       Rose Female 60.16201 117.80138              0
+## 226 462       Lois     Garcia Female 59.00067 105.30837              3
+## 227 464       Lois     Brooks Female 62.73514 114.07319              3
+## 228 471   Jennifer   Williams Female 62.29205 144.93937              2
+## 229 472      Annie   Thompson Female 66.12076 134.58624              0
+## 230 475     Rachel     Fields Female 65.61126 118.18610              3
+## 231 477      Maria     Snyder Female 62.87171 115.00124              1
+## 232 479      Irene       Cook Female 64.11557 121.84962              3
+## 233 481   Kimberly     Foster Female 67.85106 133.76997              2
+## 234 486      Doris     Bailey Female 62.61599 120.11116              3
+## 235 487    Marilyn     Weaver Female 67.69933 114.82681              4
+## 236 488    Phyllis     Arnold Female 63.07296 127.41965              3
+## 237 489   Patricia     Peters Female 58.46348  93.75313              6
+## 238 490       Judy   Peterson Female 66.11227 128.59654              6
+## 239 491    Shirley       Sims Female 62.33724 119.99203              3
+## 240 493    Marilyn     Howell Female 58.27686  90.29148              1
+## 241 494    Carolyn     Rivera Female 61.16774 111.50248              1
+## 242 495    Jessica     Fisher Female 66.12288 129.21237              1
+## 243 496       Rose        Lee Female 70.63257 158.84458              8
+## 244 497       Sara     Harper Female 62.59813 134.50238              3
+## 245 499        Ann   Castillo Female 58.23005 123.69592              3
+## 246 502     Amanda     Moreno Female 70.11203 159.70616              0
+## 247 506   Margaret       Hart Female 68.01025 156.11513              1
+## 248 507      Irene      Payne Female 61.13972 122.69441              3
+## 249 508     Andrea      Hicks Female 60.56442 116.36554              4
+## 250 509      Doris       Lane Female 62.33275 134.04908              3
+## 251 510       Tina     Taylor Female 64.25954 124.10659              1
+## 252 511        Ann     Rivera Female 57.59593  97.74513              4
+## 253 515      Doris       Rose Female 70.75588 146.87357              2
+## 254 517      Kathy     Fuller Female 63.64877 133.94672              2
+## 255 518 Jacqueline       Cole Female 67.32648 141.91594              6
+## 256 520      Julie   Crawford Female 66.06300 139.62567              4
+## 257 522   Patricia      Brown Female 67.49037 148.97427              3
+## 258 523     Rachel     Fields Female 68.87351 138.79673              5
+## 259 528     Sandra  Rodriguez Female 68.76254 158.15055              5
+## 260 531     Andrea       Ruiz Female 69.32048 140.03806              2
+## 261 532     Andrea   Peterson Female 63.52487 125.03381              2
+## 262 535     Amanda     Rogers Female 63.27210 108.88332              3
+## 263 536      Alice     Nelson Female 68.67496 144.59744              4
+## 264 537  Stephanie   Anderson Female 73.29541 143.90140              0
+## 265 540      Norma   Anderson Female 62.43483 112.09829              3
+## 266 545     Nicole    Schmidt Female 63.19721 106.39948              4
+## 267 546     Martha     Medina Female 69.17446 137.92089              3
+## 268 547      Doris      Lopez Female 59.60174 103.54306              4
+## 269 548 Jacqueline     Barnes Female 69.25874 150.90862              3
+## 270 551      Nancy    Wallace Female 66.49196 132.53770              0
+## 271 552       Anna   Williams Female 63.65083 130.28715              1
+## 272 555       Tina     Chavez Female 67.45583 141.60975              3
+## 273 556  Stephanie    Bennett Female 57.85084 102.91278              4
+## 274 557       Rose    Sanders Female 65.43688 131.64311              2
+## 275 561      Diane    Ramirez Female 67.04842 157.80615              0
+## 276 562     Sharon       Carr Female 70.76667 169.66641              4
+## 277 564       Anna   Phillips Female 65.28047 138.23267              2
+## 278 568      Susan     Weaver Female 71.51768 168.65008              5
+## 279 569      Maria      Lynch Female 69.60290 166.51136              3
+## 280 570     Louise   Anderson Female 61.80359 116.83611              2
+## 281 571   Margaret     Duncan Female 68.00700 132.53965              2
+## 282 572    Theresa    Watkins Female 60.67610 125.97453              4
+## 283 573      Diana     Arnold Female 68.68642 136.46895              3
+## 284 574 Jacqueline       Cook Female 62.93356 125.84274              2
+## 285 575   Kimberly       Ross Female 68.91217 151.66082              3
+## 286 577     Louise    Frazier Female 66.80483 141.56430              2
+## 287 579 Jacqueline      Mills Female 69.67852 149.99209              1
+## 288 580    Mildred       Ross Female 69.17858 138.77007              4
+## 289 583      Alice    Wallace Female 61.25719 117.33374              0
+## 290 585   Patricia      Smith Female 64.63448 124.38080              3
+## 291 589      Marie  Gutierrez Female 66.95557 148.62328              2
+## 292 592   Virginia     Harper Female 56.05432 104.04000              6
+## 293 594      Janet      Lewis Female 64.67734 120.67193              4
+## 294 595     Andrea     Romero Female 65.21987 124.31422              5
+## 295 597      Linda  Patterson Female 63.14829 106.46425              2
+## 296 598  Catherine      Kelly Female 65.89930 137.15483              2
+## 297 599      Julia     Nguyen Female 64.33214 132.17689              5
+## 298 600      Julia     Holmes Female 62.29126 131.67590              1
+## 299 601       Judy    Stewart Female 62.69921 120.44256              4
+## 300 605   Patricia    Chapman Female 69.53375 155.27477              2
+## 301 607       Jane       Ross Female 65.21890 131.30382              2
+## 302 611      Maria    Andrews Female 68.41098 167.17393              2
+## 303 613      Carol      James Female 68.22648 157.32702              3
+## 304 614      Kelly   Gonzalez Female 62.92221 135.64142              2
+## 305 615     Cheryl      Gomez Female 59.95642 107.19292              4
+## 306 617     Gloria     Powell Female 67.32648 145.18820              1
+## 307 618      Janet    Johnson Female 62.32428 125.16333              2
+## 308 620      Sarah      Mills Female 62.51217 117.46986              3
+## 309 623   Kimberly      Hicks Female 69.46897 136.55417              2
+## 310 626     Teresa   Peterson Female 71.56688 149.57878              2
+## 311 627      Karen     Harper Female 67.87680 127.57143              3
+## 312 628        Amy     Fuller Female 64.08300 123.50983              2
+## 313 632       Mary      Henry Female 64.06442 129.27232              4
+## 314 634       Rose      Allen Female 70.23681 138.08073              2
+## 315 638      Helen     Lawson Female 71.29604 149.07452              8
+## 316 639      Tammy    Carroll Female 65.75668 133.50723              4
+## 317 640      Julia     Hunter Female 67.35270 147.30635              2
+## 318 642      Joyce    Kennedy Female 69.78112 149.18194              1
+## 319 645      Sarah   Peterson Female 67.30731 154.07038              3
+## 320 646        Amy      Myers Female 69.34809 151.56207              0
+## 321 647      Wanda     Rogers Female 72.07851 148.85490              3
+## 322 651     Evelyn     Bowman Female 63.48668 126.57430              4
+## 323 653       Joan       Ruiz Female 68.02573 149.68486              2
+## 324 654      Marie      Lopez Female 59.74804 132.64262              2
+## 325 656    Kathryn   Peterson Female 64.72491 126.42826              4
+## 326 657    Jessica    Bradley Female 67.37213 157.92724              2
+## 327 658     Martha     Fuller Female 70.38244 142.92167              5
+## 328 661  Stephanie    Vasquez Female 71.43294 168.99074              6
+## 329 665       Tina   Richards Female 66.06844 141.39449              0
+## 330 666      Donna      Green Female 68.13148 149.84863              1
+## 331 671       Lisa     Harper Female 65.79459 134.80154              2
+## 332 672     Ashley      Smith Female 71.67543 161.78810              5
+## 333 673  Stephanie      James Female 73.79708 163.07583              3
+## 334 674      Kathy      Davis Female 61.37148 120.61523              3
+## 335 675       Lisa       Webb Female 69.44316 147.79889              1
+## 336 676       Sara      Price Female 70.49862 148.51031              1
+## 337 677    Shirley     Holmes Female 72.84169 150.67420              4
+## 338 684  Christina   Harrison Female 66.81429 128.38709              3
+## 339 685      Julie   Harrison Female 60.95832 131.89548              4
+## 340 687      Maria      Jones Female 62.36085 136.69035              5
+## 341 689      Irene       Sims Female 65.77360 129.84006              7
+## 342 690      Helen     Howell Female 70.65835 157.54872              2
+## 343 691      Nancy    Wallace Female 67.38948 149.45754              5
+## 344 696     Nicole     Torres Female 67.85470 141.78658              5
+## 345 697      Carol      Perez Female 69.79076 157.61016              1
+## 346 698     Angela      Brown Female 63.25111 136.30470              4
+## 347 699      Irene      Olson Female 58.26887 105.67513              3
+## 348 702     Rachel     Carter Female 67.15039 137.46238              4
+## 349 711      Tammy    Edwards Female 60.90024 106.43585              3
+## 350 716    Frances     Bishop Female 63.27806 141.76153              6
+## 351 717    Rebecca   Mitchell Female 65.24568 150.66455              5
+## 352 719      Debra    Jackson Female 73.81399 159.54985              4
+## 353 720     Martha     Carter Female 72.17272 152.59982              5
+## 354 722    Heather     Holmes Female 64.61843 133.60968              2
+## 355 724    Beverly      Allen Female 68.65733 149.59080              1
+## 356 725   Michelle  Patterson Female 65.68296 150.59041              3
+## 357 726      Robin   Gonzales Female 66.55435 129.90255              4
+## 358 727     Louise     Brooks Female 66.42776 137.18396              2
+## 359 728    Rebecca      Davis Female 61.78157 139.11983              3
+## 360 730      Emily    Mendoza Female 65.49701 133.69320              4
+## 361 731       Anne     Burton Female 68.09354 143.07207              6
+## 362 737   Virginia       Dunn Female 57.05437 107.75373              1
+## 363 738      Kathy    Jenkins Female 64.74725 134.32414              4
+## 364 739    Frances      Meyer Female 62.85716 115.41856              2
+## 365 740      Julie      Henry Female 68.09101 138.76819              4
+## 366 741  Christina       Hunt Female 71.79126 144.24183              2
+## 367 743     Bonnie Washington Female 67.51395 132.20994              3
+## 368 745    Carolyn    Gardner Female 66.37987 143.07932              6
+## 369 746    Cynthia     Murphy Female 68.18345 155.71133              2
+## 370 748    Phyllis   Harrison Female 59.55621 108.64047              6
+## 371 749    Lillian      Perez Female 64.45252 126.17796              3
+## 372 750    Phyllis  Gutierrez Female 65.91209 148.35829              4
+## 373 752     Teresa    Mendoza Female 71.61794 167.69694              2
+## 374 753     Teresa    Schmidt Female 68.03470 143.64156              2
+## 375 754       Ruby     Nelson Female 61.48890 117.76796              6
+## 376 755      Tammy   Anderson Female 66.13981 125.83486              4
+## 377 756     Amanda     Rogers Female 60.74299 124.34532              2
+## 378 757   Margaret      Banks Female 69.40155 137.10640              4
+## 379 758       Lisa   Campbell Female 67.45969 146.12025              6
+## 380 759      Emily       Dunn Female 66.31343 133.84925              3
+## 381 761     Sharon      Allen Female 61.31970 136.35083              3
+## 382 765    Carolyn     Tucker Female 58.35161 114.96800              3
+## 383 767  Katherine    Carroll Female 60.87902 119.45350              3
+## 384 768    Marilyn   Castillo Female 66.53144 129.02404              6
+## 385 771     Bonnie   Peterson Female 66.51151 123.86885              8
+## 386 772   Michelle     Holmes Female 65.66844 132.65296              3
+## 387 776    Shirley      Jones Female 63.16838 133.46958              3
+## 388 777     Evelyn   Gonzales Female 67.01884 135.65244              4
+## 389 779       Rose     Chavez Female 65.41359 147.80453              5
+## 390 781      Wanda      Hayes Female 65.35419 131.42581              5
+## 391 782       Mary      Gomez Female 67.69123 127.57637              1
+## 392 783      Joyce       Ward Female 70.16329 141.88486              3
+## 393 787      Nancy     Flores Female 66.35376 131.49805              2
+## 394 793        Amy     Taylor Female 64.40630 113.91252              3
+## 395 796      Betty     Tucker Female 63.82403 119.66493              2
+## 396 798       Lisa    Russell Female 59.11617 113.94211              3
+## 397 801    Dorothy      Ramos Female 69.87253 144.12300              3
+## 398 802   Michelle     Greene Female 68.60438 134.60961              2
+## 399 803       Ruth    Spencer Female 60.36736 118.89911              2
+## 400 804      Emily     Rivera Female 66.09620 127.49361              5
+## 401 805     Martha    Coleman Female 61.67773 111.50505              5
+## 402 806       Lori     Flores Female 62.67853 136.84454              2
+## 403 810       Lois  Fernandez Female 64.60695 139.51360              4
+## 404 815      Tammy        Kim Female 68.44256 141.50020              3
+## 405 818      Sarah      Owens Female 63.99734 120.47632              2
+## 406 820   Michelle    Kennedy Female 66.85458 135.32605              1
+## 407 821    Marilyn   Anderson Female 62.61715 122.41861              3
+## 408 822        Amy       Rice Female 66.78995 146.16634              1
+## 409 823    Deborah    Andrews Female 59.43831 117.55640              4
+## 410 825     Martha      Banks Female 63.65938 134.61274              7
+## 411 826     Teresa   Campbell Female 66.50468 139.71832              3
+## 412 829    Beverly    Gardner Female 63.24188 128.42484              1
+## 413 830  Katherine     Bailey Female 62.95986 139.12629              1
+## 414 832      Joyce     Graham Female 68.03206 142.22447              3
+## 415 834      Kelly    Jenkins Female 62.76865 121.77325              2
+## 416 836      Susan    Hawkins Female 69.35963 133.10182              3
+## 417 837      Nancy   Reynolds Female 65.28277 141.17675              2
+## 418 838      Kelly  Alexander Female 59.29313 120.40272              3
+## 419 840      Donna    Jackson Female 66.41866 140.70974              4
+## 420 842      Marie   Marshall Female 57.71565 116.12103              6
+## 421 844      Kelly    Ramirez Female 65.28719 130.70999              5
+## 422 846       Jean    Wheeler Female 67.09539 146.78311              2
+## 423 852  Katherine     Greene Female 76.60479 182.14998              0
+## 424 854      Irene    Mendoza Female 65.03123 155.73433              2
+## 425 857     Evelyn  Gutierrez Female 66.90715 141.27476              1
+## 426 858      Marie     Tucker Female 66.35267 144.78923              1
+## 427 859    Beverly     Wilson Female 61.22534  93.67081              2
+## 428 861  Katherine    Garrett Female 64.89323 121.91323              3
+## 429 865 Jacqueline  Carpenter Female 67.15770 138.85684              5
+## 430 866      Kelly       Long Female 65.89614 123.43659              3
+## 431 867      Donna    Stewart Female 67.64617 147.72489              3
+## 432 869      Robin      Olson Female 63.50868 130.93967              2
+## 433 871     Evelyn       Dunn Female 63.08010 125.51564              3
+## 434 872      Carol    Freeman Female 68.84493 138.42961              3
+## 435 873       Rose       Hart Female 63.39950 134.40143              5
+## 436 877      Betty    Schmidt Female 64.34188 129.12935              1
+## 437 879   Jennifer    Daniels Female 68.95607 152.13606              6
+## 438 880     Evelyn      Jones Female 63.06785 114.54661              3
+## 439 882   Margaret     Tucker Female 63.84095 137.00266              2
+## 440 884      Wanda       Reid Female 66.04816 138.20546              2
+## 441 885      Janet      Ellis Female 65.84293 130.18451              1
+## 442 887       Judy       Wood Female 61.72987 130.40283              2
+## 443 888   Kimberly     Wilson Female 67.20623 143.04214              4
+## 444 889     Teresa      Ramos Female 66.27632 132.90110              1
+## 445 895   Kathleen    Kennedy Female 63.65600 128.62922             11
+## 446 896      Annie    Johnson Female 65.10541 135.56276              3
+## 447 897      Janet      Meyer Female 66.83162 167.13578              2
+## 448 900    Lillian    Chapman Female 71.02901 163.03750              2
+## 449 904      Betty   Thompson Female 65.17877 131.57993              4
+## 450 907     Sandra       West Female 71.62983 181.70307              3
+## 451 909       Ruby      Scott Female 62.20613 132.56755              6
+## 452 910  Katherine    Alvarez Female 68.75039 150.37530              3
+## 453 913      Linda  Robertson Female 72.48247 165.90306              6
+## 454 915    Phyllis  Alexander Female 61.33734 110.12268              3
+## 455 917    Lillian     Burton Female 69.75290 155.12437              3
+## 456 919     Andrea     Tucker Female 62.82085 119.57916              2
+## 457 920        Ann    Nichols Female 65.95360 131.24237              2
+## 458 923   Kimberly    Simmons Female 67.43870 137.21564              1
+## 459 925     Rachel      Kelly Female 68.75643 142.29780              5
+## 460 927     Andrea      Berry Female 63.68960 132.82394              3
+## 461 933        Amy     Willis Female 67.89424 124.29840              5
+## 462 935     Nicole       Cook Female 65.41633 137.30637              1
+## 463 936      Linda    Garrett Female 63.35129 138.53016              3
+## 464 938  Katherine     Burton Female 64.01953 123.31891              1
+## 465 941  Stephanie   Thompson Female 60.16256 112.51524              4
+## 466 942      Susan  Patterson Female 64.67957 134.25566              3
+## 467 943    Rebecca       Hall Female 64.09073 132.40476              5
+## 468 945       Judy     Oliver Female 59.46942 101.47804              5
+## 469 946   Margaret      Garza Female 62.79975 118.00840              2
+## 470 947      Emily     Howard Female 64.38058 131.22689              5
+## 471 948      Donna    Gardner Female 70.19100 160.54231              2
+## 472 949      Kelly     Murray Female 65.18042 145.31085              5
+## 473 950  Christina      Evans Female 67.29623 147.18906              1
+## 474 953      Debra   Morrison Female 61.02291 135.68666              2
+## 475 958   Patricia  Patterson Female 62.06469 137.50644              3
+## 476 961     Pamela      Perry Female 67.06533 144.62453              4
+## 477 962  Stephanie     Harvey Female 63.60624 134.09399              3
+## 478 963   Margaret       Rice Female 66.41046 143.81212              2
+## 479 964       Joan     Hudson Female 66.32615 140.20367              3
+## 480 967   Virginia       Webb Female 68.70509 151.27165              4
+## 481 969     Angela      White Female 64.40456 137.10780              3
+## 482 971      Norma   Reynolds Female 68.42884 150.94247              0
+## 483 973    Shirley    Bradley Female 59.14821 112.26983              2
+## 484 980    Melissa       Gray Female 64.19924 135.25343              3
+## 485 981      Julie   Anderson Female 66.64354 139.03638              5
+## 486 983       Tina       Lane Female 65.07139 136.19753              2
+## 487 984    Dorothy      Mason Female 61.04618 105.68380              1
+## 488 986    Jessica     Turner Female 72.14352 159.93592              2
+## 489 988      Kathy      Hicks Female 62.79189 128.84268              4
+## 490 989    Barbara    Kennedy Female 63.85283 144.18966              1
+## 491 991    Jessica     Brooks Female 68.19738 156.98666              1
+## 492 992     Cheryl       Rice Female 67.73069 136.51393              3
+## 493 996    Cynthia     Harris Female 59.74530 127.14444              2
+## 494 997      Julie      Evans Female 66.48566 157.08778              3
+##     years_of_education                                 major      age
+## 1                    1                      medicine/nursing 17.64275
+## 2                    3                             logistics 21.10399
+## 3                    4                            psychology 20.53096
+## 4                    0                                botany 15.94527
+## 5                    5                mechanical engineering 19.21670
+## 6                    5       criminal justice administration 19.58134
+## 7                    5                     military strategy 21.80445
+## 8                    1                      medicine/nursing 23.94054
+## 9                    2                         communication 21.33236
+## 10                   3                 agricultural sciences 18.82527
+## 11                   2                      medicine/nursing 21.07451
+## 12                   1                             economics 23.76366
+## 13                   1                     military strategy 19.71057
+## 14                   4 integrated water resources management 18.13684
+## 15                   4                      applied sciences 18.74854
+## 16                   3                mechanical engineering 19.53526
+## 17                   3                               biology 20.78455
+## 18                   1                            philosophy 20.91053
+## 19                   3       criminal justice administration 18.84754
+## 20                   1                        energy studies 16.55924
+## 21                   7                 agricultural sciences 17.98520
+## 22                   2                            psychology 20.29619
+## 23                   0                            philosophy 21.27616
+## 24                   3                      animal husbandry 15.77083
+## 25                   0                      medicine/nursing 18.29770
+## 26                   3       criminal justice administration 20.93828
+## 27                   4 integrated water resources management 21.14685
+## 28                   2                         communication 20.24615
+## 29                   6                             education 21.72433
+## 30                   2                         city planning 22.02548
+## 31                   4       criminal justice administration 20.42068
+## 32                   3                 environmental science 18.27473
+## 33                   3                               biology 23.23299
+## 34                   2                          epidemiology 22.42172
+## 35                   5                                botany 20.77667
+## 36                   2                               biology 14.54944
+## 37                   5                    physical education 21.02118
+## 38                   2                          pharmacology 15.12527
+## 39                   2                        human services 21.80380
+## 40                   4                        human services 18.27359
+## 41                   6                      applied sciences 23.24532
+## 42                   3                         communication 16.47283
+## 43                   5                        energy studies 18.34268
+## 44                   3                      applied sciences 21.93253
+## 45                   2                 agricultural sciences 19.76865
+## 46                   1                            philosophy 25.83258
+## 47                   5                      applied sciences 23.16582
+## 48                   6                          pharmacology 19.94330
+## 49                   2                         communication 17.04051
+## 50                   0                      medicine/nursing 20.57695
+## 51                   2                         city planning 24.81298
+## 52                   3                         city planning 18.84435
+## 53                   1                         city planning 25.35665
+## 54                   3                            psychology 18.62090
+## 55                   4                          pharmacology 18.81568
+## 56                   1               business administration 11.13065
+## 57                   1                          epidemiology 18.18119
+## 58                   4 integrated water resources management 24.91812
+## 59                   3                            philosophy 19.73793
+## 60                   2                                botany 16.89253
+## 61                   1                             logistics 20.64774
+## 62                   2                        energy studies 19.59913
+## 63                   3                             economics 19.74454
+## 64                   2                    physical education 15.65899
+## 65                   4                 environmental science 21.94233
+## 66                   1                             education 19.22057
+## 67                   2                     culinart services 21.72252
+## 68                   1                                botany 19.50424
+## 69                   5                               biology 24.00246
+## 70                   3                      applied sciences 20.55057
+## 71                   2                             education 20.65740
+## 72                   1 integrated water resources management 15.49664
+## 73                   1                      applied sciences 19.37270
+## 74                   2                         city planning 21.30124
+## 75                   3                        energy studies 19.88921
+## 76                   0                         city planning 19.55108
+## 77                   4                            philosophy 22.49060
+## 78                   1                         city planning 22.76151
+## 79                   2                          epidemiology 20.65624
+## 80                   2                             economics 21.46047
+## 81                   2 integrated water resources management 20.87972
+## 82                   4                            psychology 27.40790
+## 83                   5                 agricultural sciences 22.19918
+## 84                   5                            psychology 22.70490
+## 85                   4               business administration 25.74573
+## 86                   3 integrated water resources management 19.43071
+## 87                   2                               biology 19.06514
+## 88                   7                      applied sciences 18.15222
+## 89                   2                mechanical engineering 17.94359
+## 90                   1                     military strategy 19.18691
+## 91                   4                     military strategy 23.67717
+## 92                   1                 agricultural sciences 23.78604
+## 93                   1                        human services 21.56207
+## 94                   0                    physical education 27.16777
+## 95                   2                               biology 19.58831
+## 96                   3                          epidemiology 18.40326
+## 97                   3                      medicine/nursing 20.29870
+## 98                   0                mechanical engineering 19.01969
+## 99                   2                      animal husbandry 20.37958
+## 100                  2                      medicine/nursing 21.22370
+## 101                  3                        human services 21.94580
+## 102                  2                            philosophy 17.64131
+## 103                  3                 agricultural sciences 19.03575
+## 104                  1                         communication 20.79042
+## 105                  0               business administration 20.57065
+## 106                  4                          pharmacology 17.17253
+## 107                  3                         communication 21.44259
+## 108                  4       criminal justice administration 17.55099
+## 109                  5                             economics 20.26560
+## 110                  3                 agricultural sciences 18.31888
+## 111                  6                         city planning 16.52151
+## 112                  6                 environmental science 19.70532
+## 113                  1       criminal justice administration 23.53162
+## 114                  5               business administration 21.93743
+## 115                  4                        energy studies 21.13508
+## 116                  2                             logistics 22.91233
+## 117                  4                             economics 16.53939
+## 118                  2                    physical education 22.39316
+## 119                  3                     culinart services 17.96663
+## 120                  3       criminal justice administration 23.26286
+## 121                  1                          pharmacology 26.57689
+## 122                  2                               biology 19.59841
+## 123                  2                          epidemiology 23.00981
+## 124                  4                         communication 19.65585
+## 125                  5                          architecture 20.23090
+## 126                  4                      medicine/nursing 19.59815
+## 127                  4                               biology 22.09547
+## 128                  3                     military strategy 20.00628
+## 129                  4       criminal justice administration 23.94809
+## 130                  3       criminal justice administration 22.51602
+## 131                  4                             logistics 17.67434
+## 132                  3                mechanical engineering 22.95047
+## 133                  1                             education 12.29306
+## 134                  0                             economics 19.38947
+## 135                  3                               biology 24.03706
+## 136                  3                             education 18.50000
+## 137                  5 integrated water resources management 23.09951
+## 138                  4                     military strategy 20.30056
+## 139                  1                            psychology 17.71510
+## 140                  4                                botany 16.98641
+## 141                  5                      medicine/nursing 16.40110
+## 142                  7                               biology 18.91888
+## 143                  3                      animal husbandry 17.46600
+## 144                  2                      animal husbandry 19.60105
+## 145                  3                             economics 20.49434
+## 146                  5                 environmental science 24.37250
+## 147                  2                               biology 22.08628
+## 148                  5                            philosophy 26.25881
+## 149                  4                    physical education 25.39256
+## 150                  1                          pharmacology 22.69690
+## 151                  1                               biology 22.43699
+## 152                  1                      medicine/nursing 18.94310
+## 153                  4                        human services 19.91682
+## 154                  3                      animal husbandry 17.17613
+## 155                  1                                botany 19.82662
+## 156                  4                             economics 20.38294
+## 157                  2                          pharmacology 21.95709
+## 158                  5                      applied sciences 16.87172
+## 159                  5                        energy studies 17.10722
+## 160                  2                            philosophy 17.50802
+## 161                  5                     culinart services 22.57393
+## 162                  2                          architecture 10.66381
+## 163                  6                        human services 18.75647
+## 164                  2                             economics 25.23058
+## 165                  3                          architecture 25.36748
+## 166                  6                      applied sciences 26.52334
+## 167                  1                      applied sciences 24.13606
+## 168                  2                            philosophy 20.03842
+## 169                  3                 agricultural sciences 23.35168
+## 170                  1                     military strategy 16.58295
+## 171                  2                      medicine/nursing 20.93191
+## 172                  1                        human services 12.84805
+## 173                  2                                botany 18.23469
+## 174                  3                                botany 23.90774
+## 175                  0                 agricultural sciences 20.08662
+## 176                  6                    physical education 18.54973
+## 177                  4                            psychology 21.93930
+## 178                  7                        human services 22.25385
+## 179                  3                         communication 20.10654
+## 180                  1                         communication 21.64507
+## 181                  6                mechanical engineering 27.55380
+## 182                  2                         communication 22.18075
+## 183                  2                          architecture 22.19631
+## 184                  1                          architecture 19.19879
+## 185                  1                          architecture 20.29005
+## 186                  3                            philosophy 19.85122
+## 187                  2                          architecture 15.81956
+## 188                  4                     culinart services 22.96536
+## 189                  1                          pharmacology 16.91755
+## 190                  3                 environmental science 15.60612
+## 191                  1                    physical education 18.42167
+## 192                  3                mechanical engineering 17.34202
+## 193                  4                mechanical engineering 17.34365
+## 194                  1                      animal husbandry 17.07809
+## 195                  3                      applied sciences 16.16114
+## 196                  3                            psychology 21.42912
+## 197                  3                 agricultural sciences 20.89453
+## 198                  6                      animal husbandry 22.89693
+## 199                  0                          pharmacology 18.63669
+## 200                  3                     culinart services 16.53850
+## 201                  1                             logistics 23.40428
+## 202                  2                      medicine/nursing 17.96900
+## 203                  2               business administration 19.84517
+## 204                  2                     culinart services 17.55393
+## 205                  0                             education 22.57096
+## 206                  2                 agricultural sciences 18.87523
+## 207                  3                        energy studies 15.33620
+## 208                  5                    physical education 22.30810
+## 209                  5                            psychology 13.45451
+## 210                  0                             education 18.67405
+## 211                  0                          pharmacology 20.28953
+## 212                  5 integrated water resources management 27.21710
+## 213                  3                            philosophy 21.89009
+## 214                  3                             economics 23.23767
+## 215                  5                            philosophy 23.76154
+## 216                  6                 environmental science 18.99999
+## 217                  3                        human services 25.67877
+## 218                  3                                botany 27.96693
+## 219                  3                            philosophy 17.49842
+## 220                  1                        human services 21.59101
+## 221                  3                      applied sciences 17.31055
+## 222                  1                            philosophy 22.82317
+## 223                  6                         city planning 19.11892
+## 224                  5                                botany 21.98378
+## 225                  5                                botany 16.08058
+## 226                  3                            philosophy 16.80293
+## 227                  5                            psychology 17.90379
+## 228                  2                    physical education 17.35418
+## 229                  2                     culinart services 20.51588
+## 230                  3                             economics 22.24737
+## 231                  1                        energy studies 19.73186
+## 232                  5                          architecture 20.00833
+## 233                  3                     military strategy 19.73364
+## 234                  3                            philosophy 19.74367
+## 235                  3                          architecture 24.70782
+## 236                  2                         communication 19.08275
+## 237                  7                            psychology 16.19003
+## 238                  1                      medicine/nursing 19.09397
+## 239                  2                             economics 16.78826
+## 240                  4                          pharmacology 21.24646
+## 241                  0                          epidemiology 18.80625
+## 242                  2                             economics 21.54377
+## 243                  2                     culinart services 21.65099
+## 244                  2               business administration 16.19529
+## 245                  3                mechanical engineering 13.51241
+## 246                  3                          epidemiology 20.07750
+## 247                  4                             education 20.20789
+## 248                  6                          architecture 19.16468
+## 249                  5                               biology 16.50589
+## 250                  5                            psychology 19.52327
+## 251                  2                      applied sciences 22.34368
+## 252                  2                 environmental science 15.90951
+## 253                  2       criminal justice administration 24.73534
+## 254                  0                     military strategy 17.13706
+## 255                  6                      medicine/nursing 22.39601
+## 256                  7                          architecture 19.87794
+## 257                  3                     military strategy 21.65255
+## 258                  2                      medicine/nursing 20.69022
+## 259                  0                        energy studies 22.06032
+## 260                  2                            psychology 24.53695
+## 261                  1                      applied sciences 20.60540
+## 262                  6                      animal husbandry 22.00580
+## 263                  2                      applied sciences 21.57631
+## 264                  5               business administration 24.26479
+## 265                  2                             education 18.06575
+## 266                  0                                botany 19.63260
+## 267                  3                             logistics 21.03526
+## 268                  3                 environmental science 21.12570
+## 269                  1                          architecture 18.65582
+## 270                  5                mechanical engineering 22.04910
+## 271                  5                         city planning 21.85049
+## 272                  5                 environmental science 19.67025
+## 273                  4                        human services 18.20332
+## 274                  4                mechanical engineering 18.23895
+## 275                  2                               biology 20.40624
+## 276                  1                            psychology 21.12729
+## 277                  2       criminal justice administration 21.66344
+## 278                  1                mechanical engineering 21.40550
+## 279                  2       criminal justice administration 17.09370
+## 280                  1                          pharmacology 16.74787
+## 281                  2                      animal husbandry 20.38227
+## 282                  2                         communication 16.74267
+## 283                  0                         city planning 24.98712
+## 284                  2                         city planning 18.56088
+## 285                  2                    physical education 21.16006
+## 286                  2               business administration 19.33480
+## 287                  2 integrated water resources management 19.76354
+## 288                  4                      applied sciences 22.01716
+## 289                  5                          pharmacology 16.27959
+## 290                  5                      animal husbandry 19.60460
+## 291                  1       criminal justice administration 18.15902
+## 292                  1                        human services 14.15051
+## 293                  3                          architecture 17.58633
+## 294                  4                      medicine/nursing 22.52837
+## 295                  0                     culinart services 21.91993
+## 296                  3                         communication 19.75386
+## 297                  6                      animal husbandry 20.64070
+## 298                  1                    physical education 17.63057
+## 299                  3                             economics 16.60652
+## 300                  0                      animal husbandry 21.97010
+## 301                  3                                botany 21.58286
+## 302                  5                        energy studies 19.44685
+## 303                  4                          pharmacology 18.58842
+## 304                  0                         communication 16.20101
+## 305                  1                          pharmacology 14.49622
+## 306                  3                      applied sciences 21.73786
+## 307                  7                      animal husbandry 17.56003
+## 308                  3                        human services 18.57976
+## 309                  5                     military strategy 25.11161
+## 310                  5                             economics 21.82043
+## 311                  4       criminal justice administration 24.68390
+## 312                  1                    physical education 18.92719
+## 313                  2                            psychology 18.18894
+## 314                  5       criminal justice administration 21.48940
+## 315                  2                     culinart services 23.97528
+## 316                  6                            psychology 22.15048
+## 317                  0                            philosophy 19.38432
+## 318                  2                         communication 24.24839
+## 319                  2                        energy studies 18.54005
+## 320                  1                 agricultural sciences 19.55934
+## 321                  2                            psychology 25.05183
+## 322                  3                 agricultural sciences 20.32650
+## 323                  6                 agricultural sciences 21.40160
+## 324                  2                 environmental science 15.43728
+## 325                  4                            psychology 16.54507
+## 326                  2                            philosophy 20.22591
+## 327                  5                mechanical engineering 25.69748
+## 328                  2                mechanical engineering 19.43605
+## 329                  2                    physical education 19.81336
+## 330                  4                               biology 20.98309
+## 331                  3                     military strategy 18.73178
+## 332                  5                                botany 23.89309
+## 333                  5                            psychology 26.21565
+## 334                  2                         communication 19.63089
+## 335                  4                        human services 21.90481
+## 336                  6               business administration 23.09233
+## 337                  2                            psychology 26.71144
+## 338                  6                                botany 25.32669
+## 339                  2       criminal justice administration 12.50085
+## 340                  1                                botany 15.01671
+## 341                  2                               biology 19.92577
+## 342                  1                     military strategy 24.14823
+## 343                  1                     military strategy 19.98677
+## 344                  2                mechanical engineering 20.05336
+## 345                  1                             logistics 21.35953
+## 346                  2                               biology 16.32636
+## 347                  4       criminal justice administration 16.65884
+## 348                  3               business administration 20.71514
+## 349                  5                         city planning 20.86981
+## 350                  5       criminal justice administration 13.87055
+## 351                  0                               biology 17.00379
+## 352                  3                        energy studies 27.37130
+## 353                  6               business administration 25.57398
+## 354                  6                      medicine/nursing 14.64805
+## 355                  2                    physical education 21.26049
+## 356                  1                    physical education 18.19573
+## 357                  2                         city planning 20.11425
+## 358                  2                      medicine/nursing 20.22738
+## 359                  3                    physical education 16.38548
+## 360                  2       criminal justice administration 22.05847
+## 361                  4                             logistics 20.03671
+## 362                  5                            philosophy 12.74472
+## 363                  2                      applied sciences 18.00704
+## 364                  4                               biology 17.15758
+## 365                  3                             education 21.28245
+## 366                  0                 agricultural sciences 28.04978
+## 367                  0                         city planning 21.91309
+## 368                  3                             education 18.49051
+## 369                  4 integrated water resources management 18.30679
+## 370                  4               business administration 17.93216
+## 371                  3 integrated water resources management 19.40937
+## 372                  4                      animal husbandry 21.57588
+## 373                  4                             education 20.76580
+## 374                  3                 environmental science 19.89604
+## 375                  0                        human services 18.99540
+## 376                  0                     military strategy 22.98415
+## 377                  2                         city planning 16.33405
+## 378                  4                            psychology 26.37661
+## 379                  5                     military strategy 22.55533
+## 380                  4                 environmental science 20.70579
+## 381                  5                            psychology 15.20000
+## 382                  2                         city planning 15.23501
+## 383                  3                          architecture 13.91051
+## 384                  1                     military strategy 21.33672
+## 385                  1                 agricultural sciences 21.10963
+## 386                  2                          pharmacology 19.54634
+## 387                  5                                botany 17.85399
+## 388                  3                          pharmacology 22.43070
+## 389                  4                mechanical engineering 17.77898
+## 390                  3                         communication 20.15367
+## 391                  4                            philosophy 23.33047
+## 392                  0                 environmental science 26.13428
+## 393                  3                        human services 23.80758
+## 394                  6                            philosophy 18.06166
+## 395                  2                             logistics 21.72521
+## 396                  4                            philosophy 15.41400
+## 397                  3                 agricultural sciences 23.42488
+## 398                  3                mechanical engineering 25.10323
+## 399                  1                                botany 14.77489
+## 400                  4                      medicine/nursing 21.56388
+## 401                  2                     military strategy 21.66693
+## 402                  2                          pharmacology 15.76811
+## 403                  4                        energy studies 14.95027
+## 404                  5                     military strategy 20.35920
+## 405                  8                          pharmacology 17.79963
+## 406                  2                     culinart services 19.73227
+## 407                  0                             economics 19.11045
+## 408                  2                 environmental science 18.92234
+## 409                  5                 agricultural sciences 14.39826
+## 410                  2       criminal justice administration 17.38705
+## 411                  1                      medicine/nursing 19.13214
+## 412                  3                     culinart services 18.85515
+## 413                  2                        energy studies 18.73167
+## 414                  3                 environmental science 22.94810
+## 415                  5                          epidemiology 16.80661
+## 416                  3                             economics 23.25794
+## 417                  3                               biology 20.29679
+## 418                  6       criminal justice administration 15.81591
+## 419                  4                          architecture 21.11497
+## 420                  4                 environmental science 14.23326
+## 421                  3                 environmental science 19.73937
+## 422                  4               business administration 18.79596
+## 423                  2                 environmental science 27.59225
+## 424                  3                        human services 16.70843
+## 425                  3                             economics 21.76792
+## 426                  4                mechanical engineering 20.68250
+## 427                  4                 environmental science 21.06841
+## 428                  3                      medicine/nursing 20.91683
+## 429                  1 integrated water resources management 20.33517
+## 430                  1                            philosophy 19.75214
+## 431                  1                 environmental science 24.01972
+## 432                  4               business administration 19.73432
+## 433                  2       criminal justice administration 17.68825
+## 434                  7       criminal justice administration 24.00616
+## 435                  2       criminal justice administration 17.77331
+## 436                  3                         communication 19.18535
+## 437                  2                             education 22.93477
+## 438                  4               business administration 18.62427
+## 439                  4                               biology 17.01380
+## 440                  3                      animal husbandry 18.84481
+## 441                  3                          epidemiology 21.61323
+## 442                  2                      applied sciences 13.43069
+## 443                  4                      animal husbandry 19.07113
+## 444                  3                        energy studies 18.39359
+## 445                  2                      animal husbandry 17.93957
+## 446                  4                     culinart services 20.66810
+## 447                  3                        energy studies 16.81380
+## 448                  2                      applied sciences 21.10780
+## 449                  3                               biology 22.04171
+## 450                  2                               biology 19.36259
+## 451                  3       criminal justice administration 17.69093
+## 452                  5                     military strategy 20.91836
+## 453                  3       criminal justice administration 24.77217
+## 454                  3                            philosophy 18.02149
+## 455                  2               business administration 19.43681
+## 456                  4                     military strategy 19.43190
+## 457                  4               business administration 22.94084
+## 458                  3                      medicine/nursing 23.06967
+## 459                  5               business administration 22.09731
+## 460                  0                         communication 17.06348
+## 461                  4                    physical education 22.84620
+## 462                  4                             economics 18.93918
+## 463                  4                     culinart services 17.88162
+## 464                  4                         city planning 18.66627
+## 465                  6                      applied sciences 15.53169
+## 466                  3                         city planning 18.93974
+## 467                  5                          architecture 19.89808
+## 468                  1                 agricultural sciences 19.43739
+## 469                  2       criminal justice administration 18.87269
+## 470                  6                         city planning 14.98345
+## 471                  1               business administration 23.41001
+## 472                  4                            philosophy 17.36378
+## 473                  5                          pharmacology 18.31203
+## 474                  2       criminal justice administration 16.84876
+## 475                  1                        human services 17.19527
+## 476                  1                                botany 21.35860
+## 477                  5                            psychology 17.11389
+## 478                  3                             economics 20.89564
+## 479                  4                          architecture 18.62456
+## 480                  5                     culinart services 22.86259
+## 481                  3                            philosophy 16.71759
+## 482                  5                            psychology 19.22270
+## 483                  2                mechanical engineering 17.89542
+## 484                  3                 agricultural sciences 21.61279
+## 485                  3               business administration 20.95489
+## 486                  3                         city planning 17.53114
+## 487                  0                             education 19.27299
+## 488                  3                                botany 25.10403
+## 489                  2                               biology 17.96941
+## 490                  6                               biology 17.21145
+## 491                  5                      applied sciences 20.63164
+## 492                  5                        energy studies 23.61626
+## 493                  2 integrated water resources management 14.07024
+## 494                  2                             education 19.87402</code></pre>
 <p>Now extracting the first and last name information from said dataset:</p>
-<pre class="(r)"><code>femname &lt;- select(fem, first_name, last_name)
+<pre class="r"><code>femname &lt;- select(fem, first_name, last_name)
 femname</code></pre>
+<pre><code>##     first_name  last_name
+## 1        Sarah     Little
+## 2        Tammy     Powell
+## 3      Theresa   Hamilton
+## 4      Phyllis    Jenkins
+## 5       Louise       Hall
+## 6         Anne      Garza
+## 7        Sarah     Weaver
+## 8       Denise   Richards
+## 9         Jean     Harris
+## 10      Cheryl    Sanders
+## 11       Annie     Warren
+## 12      Janice    Stevens
+## 13       Robin      Adams
+## 14       Emily       Shaw
+## 15     Jessica   Marshall
+## 16        Tina       Wood
+## 17       Maria     Hughes
+## 18   Christina      Clark
+## 19       Maria     Hudson
+## 20       Carol     Oliver
+## 21     Heather     Gordon
+## 22      Judith      Lopez
+## 23      Andrea       Cole
+## 24      Angela     Brooks
+## 25       Marie     Butler
+## 26     Theresa      Payne
+## 27        Ruth      Perry
+## 28  Jacqueline     Greene
+## 29     Rebecca      Price
+## 30     Heather       Reed
+## 31       Julie  Armstrong
+## 32     Mildred     Graham
+## 33      Cheryl    Andrews
+## 34        Rose       Gray
+## 35     Lillian       Wood
+## 36      Nicole      Perry
+## 37      Angela    Wallace
+## 38       Janet      Ortiz
+## 39        Joan     Parker
+## 40       Karen      Reyes
+## 41     Frances Cunningham
+## 42     Phyllis    Wheeler
+## 43     Melissa     Porter
+## 44      Janice     Willis
+## 45      Angela  Hernandez
+## 46      Teresa       Hill
+## 47       Debra    Garrett
+## 48      Louise    Stevens
+## 49        Sara     Holmes
+## 50         Ann   Robinson
+## 51       Wanda    Russell
+## 52     Marilyn     Bryant
+## 53       Robin       Wood
+## 54    Kathleen     Harris
+## 55   Christina    Gilbert
+## 56      Judith   Ferguson
+## 57    Virginia     Barnes
+## 58       Sarah       Ruiz
+## 59        Judy     Fields
+## 60      Denise      Perry
+## 61        Sara     Flores
+## 62      Sandra      Myers
+## 63        Lori       Hart
+## 64         Ann       Dunn
+## 65      Pamela    Gardner
+## 66       Helen    Schmidt
+## 67         Ann      Dixon
+## 68     Dorothy     Foster
+## 69      Bonnie   Gonzalez
+## 70       Robin      Gomez
+## 71        Anne  Hernandez
+## 72        Jane       Dean
+## 73     Heather     Romero
+## 74     Cynthia       Ford
+## 75        Mary  Rodriguez
+## 76     Phyllis    Spencer
+## 77     Mildred      Lopez
+## 78     Kathryn    Schmidt
+## 79       Janet       Cook
+## 80        Jane     Graham
+## 81      Angela    Ramirez
+## 82        Rose      Mccoy
+## 83        Anna       Cruz
+## 84      Evelyn  Gutierrez
+## 85     Theresa     Martin
+## 86   Christina   Robinson
+## 87        Mary     Fowler
+## 88      Amanda     Burton
+## 89      Cheryl      Clark
+## 90       Maria   Castillo
+## 91       Nancy        Fox
+## 92        Ruth       Webb
+## 93         Ann       Reid
+## 94     Heather  Hernandez
+## 95       Nancy    Wallace
+## 96        Anne       Reed
+## 97      Gloria      Hayes
+## 98     Heather      Stone
+## 99      Janice      Davis
+## 100      Kelly  Hernandez
+## 101     Angela     Miller
+## 102     Pamela   Reynolds
+## 103    Phyllis       King
+## 104  Stephanie     Watson
+## 105      Tammy  Armstrong
+## 106      Diana      Ortiz
+## 107      Debra    Simpson
+## 108      Kathy       Dunn
+## 109    Frances     Lawson
+## 110      Tammy      Gomez
+## 111      Emily     Rivera
+## 112      Maria    Wallace
+## 113     Judith   Gonzalez
+## 114   Kathleen     Wright
+## 115     Teresa   Anderson
+## 116     Louise    Stevens
+## 117      Betty     Howard
+## 118   Michelle   Harrison
+## 119       Lisa    Russell
+## 120     Brenda      Black
+## 121  Catherine    Griffin
+## 122    Marilyn  Rodriguez
+## 123      Carol       Ryan
+## 124   Kathleen      Green
+## 125    Marilyn  Patterson
+## 126      Julie     Fields
+## 127      Janet  Armstrong
+## 128    Heather       Hart
+## 129     Judith      Woods
+## 130    Phyllis      Stone
+## 131    Barbara     Morris
+## 132    Barbara       Hunt
+## 133      Tammy       Hart
+## 134     Denise   Robinson
+## 135     Denise   Ferguson
+## 136        Ann     Carter
+## 137      Marie    Coleman
+## 138      Linda       King
+## 139      Tammy   Gonzales
+## 140    Frances       Cook
+## 141     Amanda      Mills
+## 142   Virginia       Dean
+## 143    Deborah   Lawrence
+## 144       Jane       Reed
+## 145      Irene      Lewis
+## 146      Laura       Ross
+## 147      Kelly      Burke
+## 148      Helen       Cook
+## 149     Cheryl    Roberts
+## 150   Patricia        Kim
+## 151     Gloria     Morgan
+## 152       Judy     Peters
+## 153      Tammy     Porter
+## 154      Paula       Hall
+## 155    Deborah   Mcdonald
+## 156      Tammy     Martin
+## 157      Maria     Flores
+## 158 Jacqueline      Hicks
+## 159     Gloria     Fowler
+## 160        Amy   Matthews
+## 161      Maria     Warren
+## 162       Joan    Andrews
+## 163     Ashley      Woods
+## 164  Catherine       Diaz
+## 165       Mary       Bell
+## 166      Robin     Little
+## 167     Teresa    Schmidt
+## 168       Judy       Hill
+## 169   Kathleen     Carter
+## 170      Doris      Perez
+## 171    Beverly   Phillips
+## 172     Sharon     Bryant
+## 173    Marilyn     Peters
+## 174    Deborah   Lawrence
+## 175      Tammy     Butler
+## 176   Jennifer    Garrett
+## 177       Ruby    Kennedy
+## 178     Teresa       King
+## 179   Kathleen    Nichols
+## 180    Jessica   Mcdonald
+## 181       Anne    Freeman
+## 182     Sandra     Knight
+## 183       Jane      Woods
+## 184     Brenda    Morales
+## 185      Sarah     Foster
+## 186     Sandra  Alexander
+## 187  Elizabeth  Gutierrez
+## 188       Jean    Johnson
+## 189  Christina    Freeman
+## 190      Janet   Hamilton
+## 191       Judy     Foster
+## 192    Mildred   Gonzalez
+## 193  Christina     Taylor
+## 194    Carolyn    Hawkins
+## 195   Michelle     Weaver
+## 196  Christina       West
+## 197    Melissa  Alexander
+## 198    Phyllis       Carr
+## 199       Tina       West
+## 200     Denise     Walker
+## 201      Linda    Stewart
+## 202       Tina    Carroll
+## 203     Sharon      Davis
+## 204      Norma      Olson
+## 205      Karen   Ferguson
+## 206      Debra     Hughes
+## 207     Bonnie     Jordan
+## 208      Emily     Cooper
+## 209      Betty    Mendoza
+## 210      Julie      Evans
+## 211      Karen        Lee
+## 212    Lillian      Davis
+## 213      Betty  Patterson
+## 214      Maria    Jenkins
+## 215   Kimberly     Graham
+## 216    Kathryn     Jacobs
+## 217      Paula      Perez
+## 218      Alice       Shaw
+## 219     Brenda     Greene
+## 220    Shirley    Stevens
+## 221   Patricia      Wells
+## 222      Annie   Martinez
+## 223      Diana     Gordon
+## 224       Joan       Boyd
+## 225      Linda       Rose
+## 226       Lois     Garcia
+## 227       Lois     Brooks
+## 228   Jennifer   Williams
+## 229      Annie   Thompson
+## 230     Rachel     Fields
+## 231      Maria     Snyder
+## 232      Irene       Cook
+## 233   Kimberly     Foster
+## 234      Doris     Bailey
+## 235    Marilyn     Weaver
+## 236    Phyllis     Arnold
+## 237   Patricia     Peters
+## 238       Judy   Peterson
+## 239    Shirley       Sims
+## 240    Marilyn     Howell
+## 241    Carolyn     Rivera
+## 242    Jessica     Fisher
+## 243       Rose        Lee
+## 244       Sara     Harper
+## 245        Ann   Castillo
+## 246     Amanda     Moreno
+## 247   Margaret       Hart
+## 248      Irene      Payne
+## 249     Andrea      Hicks
+## 250      Doris       Lane
+## 251       Tina     Taylor
+## 252        Ann     Rivera
+## 253      Doris       Rose
+## 254      Kathy     Fuller
+## 255 Jacqueline       Cole
+## 256      Julie   Crawford
+## 257   Patricia      Brown
+## 258     Rachel     Fields
+## 259     Sandra  Rodriguez
+## 260     Andrea       Ruiz
+## 261     Andrea   Peterson
+## 262     Amanda     Rogers
+## 263      Alice     Nelson
+## 264  Stephanie   Anderson
+## 265      Norma   Anderson
+## 266     Nicole    Schmidt
+## 267     Martha     Medina
+## 268      Doris      Lopez
+## 269 Jacqueline     Barnes
+## 270      Nancy    Wallace
+## 271       Anna   Williams
+## 272       Tina     Chavez
+## 273  Stephanie    Bennett
+## 274       Rose    Sanders
+## 275      Diane    Ramirez
+## 276     Sharon       Carr
+## 277       Anna   Phillips
+## 278      Susan     Weaver
+## 279      Maria      Lynch
+## 280     Louise   Anderson
+## 281   Margaret     Duncan
+## 282    Theresa    Watkins
+## 283      Diana     Arnold
+## 284 Jacqueline       Cook
+## 285   Kimberly       Ross
+## 286     Louise    Frazier
+## 287 Jacqueline      Mills
+## 288    Mildred       Ross
+## 289      Alice    Wallace
+## 290   Patricia      Smith
+## 291      Marie  Gutierrez
+## 292   Virginia     Harper
+## 293      Janet      Lewis
+## 294     Andrea     Romero
+## 295      Linda  Patterson
+## 296  Catherine      Kelly
+## 297      Julia     Nguyen
+## 298      Julia     Holmes
+## 299       Judy    Stewart
+## 300   Patricia    Chapman
+## 301       Jane       Ross
+## 302      Maria    Andrews
+## 303      Carol      James
+## 304      Kelly   Gonzalez
+## 305     Cheryl      Gomez
+## 306     Gloria     Powell
+## 307      Janet    Johnson
+## 308      Sarah      Mills
+## 309   Kimberly      Hicks
+## 310     Teresa   Peterson
+## 311      Karen     Harper
+## 312        Amy     Fuller
+## 313       Mary      Henry
+## 314       Rose      Allen
+## 315      Helen     Lawson
+## 316      Tammy    Carroll
+## 317      Julia     Hunter
+## 318      Joyce    Kennedy
+## 319      Sarah   Peterson
+## 320        Amy      Myers
+## 321      Wanda     Rogers
+## 322     Evelyn     Bowman
+## 323       Joan       Ruiz
+## 324      Marie      Lopez
+## 325    Kathryn   Peterson
+## 326    Jessica    Bradley
+## 327     Martha     Fuller
+## 328  Stephanie    Vasquez
+## 329       Tina   Richards
+## 330      Donna      Green
+## 331       Lisa     Harper
+## 332     Ashley      Smith
+## 333  Stephanie      James
+## 334      Kathy      Davis
+## 335       Lisa       Webb
+## 336       Sara      Price
+## 337    Shirley     Holmes
+## 338  Christina   Harrison
+## 339      Julie   Harrison
+## 340      Maria      Jones
+## 341      Irene       Sims
+## 342      Helen     Howell
+## 343      Nancy    Wallace
+## 344     Nicole     Torres
+## 345      Carol      Perez
+## 346     Angela      Brown
+## 347      Irene      Olson
+## 348     Rachel     Carter
+## 349      Tammy    Edwards
+## 350    Frances     Bishop
+## 351    Rebecca   Mitchell
+## 352      Debra    Jackson
+## 353     Martha     Carter
+## 354    Heather     Holmes
+## 355    Beverly      Allen
+## 356   Michelle  Patterson
+## 357      Robin   Gonzales
+## 358     Louise     Brooks
+## 359    Rebecca      Davis
+## 360      Emily    Mendoza
+## 361       Anne     Burton
+## 362   Virginia       Dunn
+## 363      Kathy    Jenkins
+## 364    Frances      Meyer
+## 365      Julie      Henry
+## 366  Christina       Hunt
+## 367     Bonnie Washington
+## 368    Carolyn    Gardner
+## 369    Cynthia     Murphy
+## 370    Phyllis   Harrison
+## 371    Lillian      Perez
+## 372    Phyllis  Gutierrez
+## 373     Teresa    Mendoza
+## 374     Teresa    Schmidt
+## 375       Ruby     Nelson
+## 376      Tammy   Anderson
+## 377     Amanda     Rogers
+## 378   Margaret      Banks
+## 379       Lisa   Campbell
+## 380      Emily       Dunn
+## 381     Sharon      Allen
+## 382    Carolyn     Tucker
+## 383  Katherine    Carroll
+## 384    Marilyn   Castillo
+## 385     Bonnie   Peterson
+## 386   Michelle     Holmes
+## 387    Shirley      Jones
+## 388     Evelyn   Gonzales
+## 389       Rose     Chavez
+## 390      Wanda      Hayes
+## 391       Mary      Gomez
+## 392      Joyce       Ward
+## 393      Nancy     Flores
+## 394        Amy     Taylor
+## 395      Betty     Tucker
+## 396       Lisa    Russell
+## 397    Dorothy      Ramos
+## 398   Michelle     Greene
+## 399       Ruth    Spencer
+## 400      Emily     Rivera
+## 401     Martha    Coleman
+## 402       Lori     Flores
+## 403       Lois  Fernandez
+## 404      Tammy        Kim
+## 405      Sarah      Owens
+## 406   Michelle    Kennedy
+## 407    Marilyn   Anderson
+## 408        Amy       Rice
+## 409    Deborah    Andrews
+## 410     Martha      Banks
+## 411     Teresa   Campbell
+## 412    Beverly    Gardner
+## 413  Katherine     Bailey
+## 414      Joyce     Graham
+## 415      Kelly    Jenkins
+## 416      Susan    Hawkins
+## 417      Nancy   Reynolds
+## 418      Kelly  Alexander
+## 419      Donna    Jackson
+## 420      Marie   Marshall
+## 421      Kelly    Ramirez
+## 422       Jean    Wheeler
+## 423  Katherine     Greene
+## 424      Irene    Mendoza
+## 425     Evelyn  Gutierrez
+## 426      Marie     Tucker
+## 427    Beverly     Wilson
+## 428  Katherine    Garrett
+## 429 Jacqueline  Carpenter
+## 430      Kelly       Long
+## 431      Donna    Stewart
+## 432      Robin      Olson
+## 433     Evelyn       Dunn
+## 434      Carol    Freeman
+## 435       Rose       Hart
+## 436      Betty    Schmidt
+## 437   Jennifer    Daniels
+## 438     Evelyn      Jones
+## 439   Margaret     Tucker
+## 440      Wanda       Reid
+## 441      Janet      Ellis
+## 442       Judy       Wood
+## 443   Kimberly     Wilson
+## 444     Teresa      Ramos
+## 445   Kathleen    Kennedy
+## 446      Annie    Johnson
+## 447      Janet      Meyer
+## 448    Lillian    Chapman
+## 449      Betty   Thompson
+## 450     Sandra       West
+## 451       Ruby      Scott
+## 452  Katherine    Alvarez
+## 453      Linda  Robertson
+## 454    Phyllis  Alexander
+## 455    Lillian     Burton
+## 456     Andrea     Tucker
+## 457        Ann    Nichols
+## 458   Kimberly    Simmons
+## 459     Rachel      Kelly
+## 460     Andrea      Berry
+## 461        Amy     Willis
+## 462     Nicole       Cook
+## 463      Linda    Garrett
+## 464  Katherine     Burton
+## 465  Stephanie   Thompson
+## 466      Susan  Patterson
+## 467    Rebecca       Hall
+## 468       Judy     Oliver
+## 469   Margaret      Garza
+## 470      Emily     Howard
+## 471      Donna    Gardner
+## 472      Kelly     Murray
+## 473  Christina      Evans
+## 474      Debra   Morrison
+## 475   Patricia  Patterson
+## 476     Pamela      Perry
+## 477  Stephanie     Harvey
+## 478   Margaret       Rice
+## 479       Joan     Hudson
+## 480   Virginia       Webb
+## 481     Angela      White
+## 482      Norma   Reynolds
+## 483    Shirley    Bradley
+## 484    Melissa       Gray
+## 485      Julie   Anderson
+## 486       Tina       Lane
+## 487    Dorothy      Mason
+## 488    Jessica     Turner
+## 489      Kathy      Hicks
+## 490    Barbara    Kennedy
+## 491    Jessica     Brooks
+## 492     Cheryl       Rice
+## 493    Cynthia     Harris
+## 494      Julie      Evans</code></pre>
 <p>If I wanted to pipe it:</p>
-<pre class="(r)"><code>d %&gt;%
+<pre class="r"><code>d %&gt;%
 filter(gender == &quot;Female&quot;) %&gt;%
 select(first_name, last_name)</code></pre>
+<pre><code>##     first_name  last_name
+## 1        Sarah     Little
+## 2        Tammy     Powell
+## 3      Theresa   Hamilton
+## 4      Phyllis    Jenkins
+## 5       Louise       Hall
+## 6         Anne      Garza
+## 7        Sarah     Weaver
+## 8       Denise   Richards
+## 9         Jean     Harris
+## 10      Cheryl    Sanders
+## 11       Annie     Warren
+## 12      Janice    Stevens
+## 13       Robin      Adams
+## 14       Emily       Shaw
+## 15     Jessica   Marshall
+## 16        Tina       Wood
+## 17       Maria     Hughes
+## 18   Christina      Clark
+## 19       Maria     Hudson
+## 20       Carol     Oliver
+## 21     Heather     Gordon
+## 22      Judith      Lopez
+## 23      Andrea       Cole
+## 24      Angela     Brooks
+## 25       Marie     Butler
+## 26     Theresa      Payne
+## 27        Ruth      Perry
+## 28  Jacqueline     Greene
+## 29     Rebecca      Price
+## 30     Heather       Reed
+## 31       Julie  Armstrong
+## 32     Mildred     Graham
+## 33      Cheryl    Andrews
+## 34        Rose       Gray
+## 35     Lillian       Wood
+## 36      Nicole      Perry
+## 37      Angela    Wallace
+## 38       Janet      Ortiz
+## 39        Joan     Parker
+## 40       Karen      Reyes
+## 41     Frances Cunningham
+## 42     Phyllis    Wheeler
+## 43     Melissa     Porter
+## 44      Janice     Willis
+## 45      Angela  Hernandez
+## 46      Teresa       Hill
+## 47       Debra    Garrett
+## 48      Louise    Stevens
+## 49        Sara     Holmes
+## 50         Ann   Robinson
+## 51       Wanda    Russell
+## 52     Marilyn     Bryant
+## 53       Robin       Wood
+## 54    Kathleen     Harris
+## 55   Christina    Gilbert
+## 56      Judith   Ferguson
+## 57    Virginia     Barnes
+## 58       Sarah       Ruiz
+## 59        Judy     Fields
+## 60      Denise      Perry
+## 61        Sara     Flores
+## 62      Sandra      Myers
+## 63        Lori       Hart
+## 64         Ann       Dunn
+## 65      Pamela    Gardner
+## 66       Helen    Schmidt
+## 67         Ann      Dixon
+## 68     Dorothy     Foster
+## 69      Bonnie   Gonzalez
+## 70       Robin      Gomez
+## 71        Anne  Hernandez
+## 72        Jane       Dean
+## 73     Heather     Romero
+## 74     Cynthia       Ford
+## 75        Mary  Rodriguez
+## 76     Phyllis    Spencer
+## 77     Mildred      Lopez
+## 78     Kathryn    Schmidt
+## 79       Janet       Cook
+## 80        Jane     Graham
+## 81      Angela    Ramirez
+## 82        Rose      Mccoy
+## 83        Anna       Cruz
+## 84      Evelyn  Gutierrez
+## 85     Theresa     Martin
+## 86   Christina   Robinson
+## 87        Mary     Fowler
+## 88      Amanda     Burton
+## 89      Cheryl      Clark
+## 90       Maria   Castillo
+## 91       Nancy        Fox
+## 92        Ruth       Webb
+## 93         Ann       Reid
+## 94     Heather  Hernandez
+## 95       Nancy    Wallace
+## 96        Anne       Reed
+## 97      Gloria      Hayes
+## 98     Heather      Stone
+## 99      Janice      Davis
+## 100      Kelly  Hernandez
+## 101     Angela     Miller
+## 102     Pamela   Reynolds
+## 103    Phyllis       King
+## 104  Stephanie     Watson
+## 105      Tammy  Armstrong
+## 106      Diana      Ortiz
+## 107      Debra    Simpson
+## 108      Kathy       Dunn
+## 109    Frances     Lawson
+## 110      Tammy      Gomez
+## 111      Emily     Rivera
+## 112      Maria    Wallace
+## 113     Judith   Gonzalez
+## 114   Kathleen     Wright
+## 115     Teresa   Anderson
+## 116     Louise    Stevens
+## 117      Betty     Howard
+## 118   Michelle   Harrison
+## 119       Lisa    Russell
+## 120     Brenda      Black
+## 121  Catherine    Griffin
+## 122    Marilyn  Rodriguez
+## 123      Carol       Ryan
+## 124   Kathleen      Green
+## 125    Marilyn  Patterson
+## 126      Julie     Fields
+## 127      Janet  Armstrong
+## 128    Heather       Hart
+## 129     Judith      Woods
+## 130    Phyllis      Stone
+## 131    Barbara     Morris
+## 132    Barbara       Hunt
+## 133      Tammy       Hart
+## 134     Denise   Robinson
+## 135     Denise   Ferguson
+## 136        Ann     Carter
+## 137      Marie    Coleman
+## 138      Linda       King
+## 139      Tammy   Gonzales
+## 140    Frances       Cook
+## 141     Amanda      Mills
+## 142   Virginia       Dean
+## 143    Deborah   Lawrence
+## 144       Jane       Reed
+## 145      Irene      Lewis
+## 146      Laura       Ross
+## 147      Kelly      Burke
+## 148      Helen       Cook
+## 149     Cheryl    Roberts
+## 150   Patricia        Kim
+## 151     Gloria     Morgan
+## 152       Judy     Peters
+## 153      Tammy     Porter
+## 154      Paula       Hall
+## 155    Deborah   Mcdonald
+## 156      Tammy     Martin
+## 157      Maria     Flores
+## 158 Jacqueline      Hicks
+## 159     Gloria     Fowler
+## 160        Amy   Matthews
+## 161      Maria     Warren
+## 162       Joan    Andrews
+## 163     Ashley      Woods
+## 164  Catherine       Diaz
+## 165       Mary       Bell
+## 166      Robin     Little
+## 167     Teresa    Schmidt
+## 168       Judy       Hill
+## 169   Kathleen     Carter
+## 170      Doris      Perez
+## 171    Beverly   Phillips
+## 172     Sharon     Bryant
+## 173    Marilyn     Peters
+## 174    Deborah   Lawrence
+## 175      Tammy     Butler
+## 176   Jennifer    Garrett
+## 177       Ruby    Kennedy
+## 178     Teresa       King
+## 179   Kathleen    Nichols
+## 180    Jessica   Mcdonald
+## 181       Anne    Freeman
+## 182     Sandra     Knight
+## 183       Jane      Woods
+## 184     Brenda    Morales
+## 185      Sarah     Foster
+## 186     Sandra  Alexander
+## 187  Elizabeth  Gutierrez
+## 188       Jean    Johnson
+## 189  Christina    Freeman
+## 190      Janet   Hamilton
+## 191       Judy     Foster
+## 192    Mildred   Gonzalez
+## 193  Christina     Taylor
+## 194    Carolyn    Hawkins
+## 195   Michelle     Weaver
+## 196  Christina       West
+## 197    Melissa  Alexander
+## 198    Phyllis       Carr
+## 199       Tina       West
+## 200     Denise     Walker
+## 201      Linda    Stewart
+## 202       Tina    Carroll
+## 203     Sharon      Davis
+## 204      Norma      Olson
+## 205      Karen   Ferguson
+## 206      Debra     Hughes
+## 207     Bonnie     Jordan
+## 208      Emily     Cooper
+## 209      Betty    Mendoza
+## 210      Julie      Evans
+## 211      Karen        Lee
+## 212    Lillian      Davis
+## 213      Betty  Patterson
+## 214      Maria    Jenkins
+## 215   Kimberly     Graham
+## 216    Kathryn     Jacobs
+## 217      Paula      Perez
+## 218      Alice       Shaw
+## 219     Brenda     Greene
+## 220    Shirley    Stevens
+## 221   Patricia      Wells
+## 222      Annie   Martinez
+## 223      Diana     Gordon
+## 224       Joan       Boyd
+## 225      Linda       Rose
+## 226       Lois     Garcia
+## 227       Lois     Brooks
+## 228   Jennifer   Williams
+## 229      Annie   Thompson
+## 230     Rachel     Fields
+## 231      Maria     Snyder
+## 232      Irene       Cook
+## 233   Kimberly     Foster
+## 234      Doris     Bailey
+## 235    Marilyn     Weaver
+## 236    Phyllis     Arnold
+## 237   Patricia     Peters
+## 238       Judy   Peterson
+## 239    Shirley       Sims
+## 240    Marilyn     Howell
+## 241    Carolyn     Rivera
+## 242    Jessica     Fisher
+## 243       Rose        Lee
+## 244       Sara     Harper
+## 245        Ann   Castillo
+## 246     Amanda     Moreno
+## 247   Margaret       Hart
+## 248      Irene      Payne
+## 249     Andrea      Hicks
+## 250      Doris       Lane
+## 251       Tina     Taylor
+## 252        Ann     Rivera
+## 253      Doris       Rose
+## 254      Kathy     Fuller
+## 255 Jacqueline       Cole
+## 256      Julie   Crawford
+## 257   Patricia      Brown
+## 258     Rachel     Fields
+## 259     Sandra  Rodriguez
+## 260     Andrea       Ruiz
+## 261     Andrea   Peterson
+## 262     Amanda     Rogers
+## 263      Alice     Nelson
+## 264  Stephanie   Anderson
+## 265      Norma   Anderson
+## 266     Nicole    Schmidt
+## 267     Martha     Medina
+## 268      Doris      Lopez
+## 269 Jacqueline     Barnes
+## 270      Nancy    Wallace
+## 271       Anna   Williams
+## 272       Tina     Chavez
+## 273  Stephanie    Bennett
+## 274       Rose    Sanders
+## 275      Diane    Ramirez
+## 276     Sharon       Carr
+## 277       Anna   Phillips
+## 278      Susan     Weaver
+## 279      Maria      Lynch
+## 280     Louise   Anderson
+## 281   Margaret     Duncan
+## 282    Theresa    Watkins
+## 283      Diana     Arnold
+## 284 Jacqueline       Cook
+## 285   Kimberly       Ross
+## 286     Louise    Frazier
+## 287 Jacqueline      Mills
+## 288    Mildred       Ross
+## 289      Alice    Wallace
+## 290   Patricia      Smith
+## 291      Marie  Gutierrez
+## 292   Virginia     Harper
+## 293      Janet      Lewis
+## 294     Andrea     Romero
+## 295      Linda  Patterson
+## 296  Catherine      Kelly
+## 297      Julia     Nguyen
+## 298      Julia     Holmes
+## 299       Judy    Stewart
+## 300   Patricia    Chapman
+## 301       Jane       Ross
+## 302      Maria    Andrews
+## 303      Carol      James
+## 304      Kelly   Gonzalez
+## 305     Cheryl      Gomez
+## 306     Gloria     Powell
+## 307      Janet    Johnson
+## 308      Sarah      Mills
+## 309   Kimberly      Hicks
+## 310     Teresa   Peterson
+## 311      Karen     Harper
+## 312        Amy     Fuller
+## 313       Mary      Henry
+## 314       Rose      Allen
+## 315      Helen     Lawson
+## 316      Tammy    Carroll
+## 317      Julia     Hunter
+## 318      Joyce    Kennedy
+## 319      Sarah   Peterson
+## 320        Amy      Myers
+## 321      Wanda     Rogers
+## 322     Evelyn     Bowman
+## 323       Joan       Ruiz
+## 324      Marie      Lopez
+## 325    Kathryn   Peterson
+## 326    Jessica    Bradley
+## 327     Martha     Fuller
+## 328  Stephanie    Vasquez
+## 329       Tina   Richards
+## 330      Donna      Green
+## 331       Lisa     Harper
+## 332     Ashley      Smith
+## 333  Stephanie      James
+## 334      Kathy      Davis
+## 335       Lisa       Webb
+## 336       Sara      Price
+## 337    Shirley     Holmes
+## 338  Christina   Harrison
+## 339      Julie   Harrison
+## 340      Maria      Jones
+## 341      Irene       Sims
+## 342      Helen     Howell
+## 343      Nancy    Wallace
+## 344     Nicole     Torres
+## 345      Carol      Perez
+## 346     Angela      Brown
+## 347      Irene      Olson
+## 348     Rachel     Carter
+## 349      Tammy    Edwards
+## 350    Frances     Bishop
+## 351    Rebecca   Mitchell
+## 352      Debra    Jackson
+## 353     Martha     Carter
+## 354    Heather     Holmes
+## 355    Beverly      Allen
+## 356   Michelle  Patterson
+## 357      Robin   Gonzales
+## 358     Louise     Brooks
+## 359    Rebecca      Davis
+## 360      Emily    Mendoza
+## 361       Anne     Burton
+## 362   Virginia       Dunn
+## 363      Kathy    Jenkins
+## 364    Frances      Meyer
+## 365      Julie      Henry
+## 366  Christina       Hunt
+## 367     Bonnie Washington
+## 368    Carolyn    Gardner
+## 369    Cynthia     Murphy
+## 370    Phyllis   Harrison
+## 371    Lillian      Perez
+## 372    Phyllis  Gutierrez
+## 373     Teresa    Mendoza
+## 374     Teresa    Schmidt
+## 375       Ruby     Nelson
+## 376      Tammy   Anderson
+## 377     Amanda     Rogers
+## 378   Margaret      Banks
+## 379       Lisa   Campbell
+## 380      Emily       Dunn
+## 381     Sharon      Allen
+## 382    Carolyn     Tucker
+## 383  Katherine    Carroll
+## 384    Marilyn   Castillo
+## 385     Bonnie   Peterson
+## 386   Michelle     Holmes
+## 387    Shirley      Jones
+## 388     Evelyn   Gonzales
+## 389       Rose     Chavez
+## 390      Wanda      Hayes
+## 391       Mary      Gomez
+## 392      Joyce       Ward
+## 393      Nancy     Flores
+## 394        Amy     Taylor
+## 395      Betty     Tucker
+## 396       Lisa    Russell
+## 397    Dorothy      Ramos
+## 398   Michelle     Greene
+## 399       Ruth    Spencer
+## 400      Emily     Rivera
+## 401     Martha    Coleman
+## 402       Lori     Flores
+## 403       Lois  Fernandez
+## 404      Tammy        Kim
+## 405      Sarah      Owens
+## 406   Michelle    Kennedy
+## 407    Marilyn   Anderson
+## 408        Amy       Rice
+## 409    Deborah    Andrews
+## 410     Martha      Banks
+## 411     Teresa   Campbell
+## 412    Beverly    Gardner
+## 413  Katherine     Bailey
+## 414      Joyce     Graham
+## 415      Kelly    Jenkins
+## 416      Susan    Hawkins
+## 417      Nancy   Reynolds
+## 418      Kelly  Alexander
+## 419      Donna    Jackson
+## 420      Marie   Marshall
+## 421      Kelly    Ramirez
+## 422       Jean    Wheeler
+## 423  Katherine     Greene
+## 424      Irene    Mendoza
+## 425     Evelyn  Gutierrez
+## 426      Marie     Tucker
+## 427    Beverly     Wilson
+## 428  Katherine    Garrett
+## 429 Jacqueline  Carpenter
+## 430      Kelly       Long
+## 431      Donna    Stewart
+## 432      Robin      Olson
+## 433     Evelyn       Dunn
+## 434      Carol    Freeman
+## 435       Rose       Hart
+## 436      Betty    Schmidt
+## 437   Jennifer    Daniels
+## 438     Evelyn      Jones
+## 439   Margaret     Tucker
+## 440      Wanda       Reid
+## 441      Janet      Ellis
+## 442       Judy       Wood
+## 443   Kimberly     Wilson
+## 444     Teresa      Ramos
+## 445   Kathleen    Kennedy
+## 446      Annie    Johnson
+## 447      Janet      Meyer
+## 448    Lillian    Chapman
+## 449      Betty   Thompson
+## 450     Sandra       West
+## 451       Ruby      Scott
+## 452  Katherine    Alvarez
+## 453      Linda  Robertson
+## 454    Phyllis  Alexander
+## 455    Lillian     Burton
+## 456     Andrea     Tucker
+## 457        Ann    Nichols
+## 458   Kimberly    Simmons
+## 459     Rachel      Kelly
+## 460     Andrea      Berry
+## 461        Amy     Willis
+## 462     Nicole       Cook
+## 463      Linda    Garrett
+## 464  Katherine     Burton
+## 465  Stephanie   Thompson
+## 466      Susan  Patterson
+## 467    Rebecca       Hall
+## 468       Judy     Oliver
+## 469   Margaret      Garza
+## 470      Emily     Howard
+## 471      Donna    Gardner
+## 472      Kelly     Murray
+## 473  Christina      Evans
+## 474      Debra   Morrison
+## 475   Patricia  Patterson
+## 476     Pamela      Perry
+## 477  Stephanie     Harvey
+## 478   Margaret       Rice
+## 479       Joan     Hudson
+## 480   Virginia       Webb
+## 481     Angela      White
+## 482      Norma   Reynolds
+## 483    Shirley    Bradley
+## 484    Melissa       Gray
+## 485      Julie   Anderson
+## 486       Tina       Lane
+## 487    Dorothy      Mason
+## 488    Jessica     Turner
+## 489      Kathy      Hicks
+## 490    Barbara    Kennedy
+## 491    Jessica     Brooks
+## 492     Cheryl       Rice
+## 493    Cynthia     Harris
+## 494      Julie      Evans</code></pre>
 
 
 
