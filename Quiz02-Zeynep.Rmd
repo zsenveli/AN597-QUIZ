@@ -1,0 +1,41 @@
+---
+title: "Quiz02-Zeynep"
+author: "Zeynep Senveli"
+date: "10/3/2017"
+output: html_document
+---
+
+```{r}
+library(dplyr)
+library(curl)
+f <- f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv")
+d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+  
+d %>%
+filter(gender == "Female") %>%
+select(first_name, last_name, height, weight, zombies_killed)
+```
+
+```{r}
+tall <- subset(d, height > 65)
+tall
+short <- subset(d, height < 65)
+short
+
+library(ggplot2)
+
+par(mfrow = c(1, 1))
+t <- ggplot(data = tall, aes(x = height, y = zombies_killed))
+t <- t + xlab("height") + ylab("zombies killed")  
+t <- t + geom_point() 
+t <- t + theme(legend.position = "bottom", legend.title = element_blank()) 
+t 
+
+par(mfrow = c(1, 1))
+s <- ggplot(data = short, aes(x = height, y = zombies_killed))
+s <- s + xlab("height") + ylab("zombies killed")  
+s <- s + geom_point() 
+s <- s + theme(legend.position = "bottom", legend.title = element_blank()) 
+s 
+
+```
