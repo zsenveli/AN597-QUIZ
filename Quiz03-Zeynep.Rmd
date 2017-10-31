@@ -1,0 +1,25 @@
+---
+title: "Quiz_LinearRegression-Zeynep"
+author: "Zeynep Senveli"
+date: "10/31/2017"
+output: html_document
+---
+
+```{r}
+library(curl)
+library(ggplot2)
+library(dplyr)
+f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv")
+d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+head(d)
+m <- subset(d, d$major == "medicine/nursing")
+m
+t <- lm(data = m, m$age ~ m$years_of_education)
+t
+g <- ggplot(data = m, aes(x = m$years_of_education, y = m$age))
+g <- g + geom_point()
+g <- g + geom_smooth(method = "lm", formula = y ~ x)
+g
+```
+
+I ran out of time before I could figure out plotting the confidence intervals--so sorry!!
